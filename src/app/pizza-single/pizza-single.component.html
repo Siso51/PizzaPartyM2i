@@ -1,0 +1,14 @@
+
+<div class="card" *ngIf="selectedPizza">
+    <div>{{selectedPizza.id}}</div>
+    <div>{{selectedPizza.name | uppercase}}</div>
+    <div [hidden]="isHidden">
+        {{selectedPizza.prix | currency:'EUR'}}
+    </div>
+
+    <a [routerLink]="['/pizza', selectedPizza.id + 1]">Pizza suivante</a>
+  </div>
+  
+    <!--<input type="checkbox" [(ngModel)]="isHidden" /> Afficher le prix-->
+        <!--<input type="checkbox" (click)="isHidden = !isHidden" /> Afficher le prix-->
+  

@@ -1,0 +1,60 @@
+<form (submit)="checkForm()" #registerForm="ngForm">
+    <div class="form-group">
+      <label for="login">Login</label>
+      <input type="text" [(ngModel)]="registerForm.login" minlength="5" name="login" required #login="ngModel" />
+      <div *ngIf="login.invalid && (login.dirty || login.touched)"
+          class="alert alert-danger">
+        <div *ngIf="login.errors.required">
+          Le login est requis.
+        </div>
+        <div *ngIf="login.errors.minlength">
+            Le login doit être de 5 caractères minimun.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" [(ngModel)]="registerForm.email" minlength="5" name="email" required #email="ngModel" />
+      <div *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="alert alert-danger">
+        <div *ngIf="email.errors.required">
+          L'email est requis.
+        </div>
+        <div *ngIf="email.errors.minlength">
+            L'email doit être de 5 caractères minimun.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="text" [(ngModel)]="registerForm.password" minlength="5" name="password" required #password="ngModel" />
+      <div *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="alert alert-danger">
+        <div *ngIf="password.errors.required">
+          Le mot de passe est requis.
+        </div>
+        <div *ngIf="password.errors.minlength">
+            Le mot de passe doit être de 5 caractères minimun.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password_bis">Confirm password</label>
+      <input type="text" [(ngModel)]="registerForm.password_bis" minlength="5" name="password_bis" required #password_bis="ngModel" />
+      <div *ngIf="(password_bis.invalid && (password_bis.dirty || password_bis.touched)) || (password.value !== password_bis.value)"
+          class="alert alert-danger">
+        <div *ngIf="password_bis.errors.required">
+          La confirmation du mot de passe est requis.
+        </div>
+        <div *ngIf="password_bis.errors.minlength">
+            La confirmation du mot de passe doit être de 5 caractères minimun.
+        </div>
+        <div *ngIf="password.value !== password_bis.value">
+            La confirmation du mot de passe doit être identique au mot de passe ci-dessus.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success" [disabled]="registerForm.invalid">Se connecter</button>
+    </div>
+  </form>

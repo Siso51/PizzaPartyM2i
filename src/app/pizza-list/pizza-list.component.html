@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-12">
+      <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <app-pizza [pizza]="selectedPizza">
+
+          </app-pizza>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+      <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        Formulaire pour ajouter une pizza :
+    </div>
+</div>
+
+<div class="row">
+    <form (submit)="createPizza()">
+      <div class="col-md-12">
+        <input type="text" [(ngModel)]="newPizza.name" name="nName" />
+      </div>
+      <div class="col-md-12">
+        <input type="text" [(ngModel)]="newPizza.prix" name="nPrix" />
+      </div>
+      <div class="col-md-12">
+        <button [disabled]="!isValid()">Ajouter une pizza</button>
+      </div>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+      <hr />
+    </div>
+</div>
+
+
+<div class="row rowPizza">
+    <div class="col-md-3"
+    *ngFor="let pizza of pizzas; let i = index" 
+    (click)="showPizza(pizza)"
+    [class.selected]="pizza === selectedPizza"
+    >
+      <span>{{i}}/{{pizzas.length}}</span>
+      <app-pizza [pizza]="pizza" [selected]="pizza === selectedPizza">
+        
+      </app-pizza>
+
+      <button (click)="deletePizza(pizza)">Supprimer une pizza</button>
+    </div>
+      
+</div>
+
+<!--<div>
+<ng-template ngFor let-pizza [ngForOf]="pizzas">
+  <div>{{pizza}}</div>
+</ng-template>
+</div>-->
+
+<!--<ul>
+<li *ngFor="let pizza of pizzas; let i = index" (click)="showPizza(pizza)">
+  {{i + 1}} / {{pizzas.length}} -
+  <!--{{pizza | json}}-->
+  <!--{{pizza.name}}-->
+<!--</li>
+</ul>-->

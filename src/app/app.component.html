@@ -1,0 +1,36 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <h1>
+                  {{ title }} <br/>
+                </h1>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-12">
+              <h5>
+                  {{ date | date:'medium':'' }} <br/>
+              </h5>
+          </div>
+      </div>
+
+      <app-menu [title]="title" (menuChange)="changeTitle($event)"></app-menu>
+
+      <!--
+      <div class="row">
+          <div class="col-md-12">
+              <a routerLink="/pizzas" routerLinkActive="active">Liste de Pizzas</a>
+              <!-- <a [routerLink]="['pizzas', pizza.id]">Liste de Pizzas</a> -->
+          <!--</div>
+      </div>
+    -->
+
+      <router-outlet></router-outlet>
+    
+  </div>
+</div>
+  
+  

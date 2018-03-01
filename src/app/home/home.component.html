@@ -1,0 +1,23 @@
+<p [bg]="'red'">
+  home works!
+</p>
+
+<div>
+  <!-- <input type="text" (keyup)="onKey($event)" [(ngModel)]="value" /> -->
+  <input type="text" (keyup)="onKey(searchElement.value)" #searchElement />
+
+  <div class="row">
+    <div class="col-md-3"
+      *ngFor="let pizza of pizzas; let i = index" 
+      (click)="showPizza(pizza)"
+      [class.selected]="pizza === selectedPizza"
+      >
+        <span>{{i+1}}/{{pizzas.length}}</span>
+        <app-pizza [pizza]="pizza" [selected]="pizza === selectedPizza">
+          
+        </app-pizza>
+
+        <button (click)="deletePizza(pizza)">Supprimer une pizza</button>
+    </div>
+  </div>
+</div>

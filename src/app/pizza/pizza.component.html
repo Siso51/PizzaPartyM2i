@@ -1,0 +1,24 @@
+
+<div class="card" [ngClass]="{'selected':selected}" *ngIf="pizza">
+  <div>{{pizza.id}}</div>
+  <div>{{pizza.name | uppercase}}</div>
+  <div [hidden]="isHidden">
+      {{pizza.prix | currency:'EUR'}}
+  </div>
+
+  <button (click)="hidePrice($event)">
+      <span *ngIf="!isHidden">Masquer le prix</span>
+      <span *ngIf="isHidden">Afficher le prix</span>
+        
+      
+    <!--<span *ngIf="!isHidden; else contentIsHidden">Masquer le prix</span>
+    <ng-template #contentIsHidden>Afficher le prix</ng-template>-->
+  </button>
+
+  <button>
+      <a [routerLink]="['/pizza', pizza.id]">Voir la pizza</a>
+  </button>
+</div>
+
+  <!--<input type="checkbox" [(ngModel)]="isHidden" /> Afficher le prix-->
+      <!--<input type="checkbox" (click)="isHidden = !isHidden" /> Afficher le prix-->
