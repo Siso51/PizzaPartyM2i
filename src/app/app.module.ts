@@ -52,7 +52,8 @@ registerLocaleData(localeFr);
       {path: 'register', component: RegisterComponent},
       {path: 'contact', component: ContactComponent}
     ]),
-    !environment.production ? InMemoryWebApiModule.forRoot(FakeApi) : []
+    //!environment.production ? InMemoryWebApiModule.forRoot(FakeApi) : []
+    InMemoryWebApiModule.forRoot(FakeApi)
   ],
   providers : [
     {provide: LOCALE_ID, useValue: 'fr-FR'},
